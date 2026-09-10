@@ -61,7 +61,11 @@ class Reader:
         # transpose the DataFrame, now the SNP IDs are columns, and sample IDs are indexes
         df = df.transpose()
         # keep the indexes and columns
-        self.indexes = df.index.values_host
+        # repro fix (G2): cudf >= 23 removed Index.values_host (and its Index
+        # is not iterable); to_numpy() is host-side on both cudf and pandas
+        # indexes. Semantics unchanged (ordered sample IDs); see
+        # REPRODUCTION.md fix log.
+        self.indexes = df.index.to_numpy()
         self.columns = df.columns
         # drop indexes and reduce memory consumption
         if reset:

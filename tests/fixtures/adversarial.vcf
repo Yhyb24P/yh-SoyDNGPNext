@@ -1,0 +1,9 @@
+##fileformat=VCFv4.2
+##source=SoyDNGPNext adversarial fixture (synthetic GT spellings, not real data)
+##contig=<ID=Chr01>
+##contig=<ID=Chr02>
+##contig=<ID=Chr03>
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	S_00	S_00p	S_01	S_01p	S_10	S_10p	S_11	S_11p	S_MISS	S_MISSP	S_DP11	S_DP01	S_DPMISS
+Chr01	100	fx001	A	G	.	PASS	.	GT	0/0	0|0	0/1	0|1	1/0	1|0	1/1	1|1	./.	.|.	1/1:99	0/1:50:20	./.:-1
+Chr02	200	fx002	C	T	.	PASS	.	GT	0/0	0|0	0/1	0|1	1/0	1|0	1/1	1|1	./.	.|.	1/1:99	0/1:50:20	./.:-1
+Chr03	300	fx003	G	A	.	PASS	.	GT	0/0	0|0	0/1	0|1	1/0	1|0	1/1	1|1	./.	.|.	1/1:99	0/1:50:20	./.:-1
