@@ -1,0 +1,703 @@
+{
+  "model": "paper model (PAPER_MODEL_V1)",
+  "source": {
+    "repo": "IndigoFloyd/SoybeanWebsite",
+    "file": "AlexNet_206.py",
+    "commit": "f724d9b1974bb78b7832b191af99f589a2c5e549",
+    "fetched": "2026-09-11",
+    "port": "src/paper_model/soydngp_ca.py",
+    "policy": "verbatim copy, no refactoring"
+  },
+  "architecture": {
+    "conv_layers": 12,
+    "conv_layer_indices": [
+      0,
+      5,
+      9,
+      13,
+      17,
+      21,
+      25,
+      29,
+      33,
+      37,
+      41,
+      45
+    ],
+    "ca_blocks": [
+      {
+        "index": 4,
+        "channels": 32,
+        "spatial": [
+          206,
+          206
+        ],
+        "position": "after first conv stage"
+      },
+      {
+        "index": 49,
+        "channels": 1024,
+        "spatial": [
+          7,
+          7
+        ],
+        "position": "before flatten"
+      }
+    ],
+    "flatten_features": 50176,
+    "head": "Linear(50176, 1, bias=True)"
+  },
+  "input_shape": [
+    2,
+    3,
+    206,
+    206
+  ],
+  "regression": {
+    "output_shape": [
+      2,
+      1
+    ],
+    "output_finite": true,
+    "backward": {
+      "loss_finite": true,
+      "grads_finite": true,
+      "params_with_grad": 44
+    }
+  },
+  "intermediate_shapes": {
+    "0": [
+      2,
+      32,
+      206,
+      206
+    ],
+    "1": [
+      2,
+      32,
+      206,
+      206
+    ],
+    "2": [
+      2,
+      32,
+      206,
+      206
+    ],
+    "3": [
+      2,
+      32,
+      206,
+      206
+    ],
+    "4": [
+      2,
+      32,
+      206,
+      206
+    ],
+    "5": [
+      2,
+      64,
+      103,
+      103
+    ],
+    "6": [
+      2,
+      64,
+      103,
+      103
+    ],
+    "7": [
+      2,
+      64,
+      103,
+      103
+    ],
+    "8": [
+      2,
+      64,
+      103,
+      103
+    ],
+    "9": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "10": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "11": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "12": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "13": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "14": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "15": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "16": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "17": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "18": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "19": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "20": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "21": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "22": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "23": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "24": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "25": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "26": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "27": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "28": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "29": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "30": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "31": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "32": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "33": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "34": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "35": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "36": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "37": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "38": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "39": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "40": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "41": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "42": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "43": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "44": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "45": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "46": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "47": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "48": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "49": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "50": [
+      2,
+      50176
+    ],
+    "51": [
+      2,
+      50176
+    ],
+    "52": [
+      2,
+      50176
+    ],
+    "53": [
+      2,
+      1
+    ]
+  },
+  "total_parameters": 18344037,
+  "trainable_parameters": 18344037,
+  "module_names": [
+    [
+      "0",
+      "Conv2d"
+    ],
+    [
+      "1",
+      "BatchNorm2d"
+    ],
+    [
+      "2",
+      "Dropout"
+    ],
+    [
+      "3",
+      "ReLU"
+    ],
+    [
+      "4",
+      "CA_Block"
+    ],
+    [
+      "5",
+      "Conv2d"
+    ],
+    [
+      "6",
+      "BatchNorm2d"
+    ],
+    [
+      "7",
+      "Dropout"
+    ],
+    [
+      "8",
+      "ReLU"
+    ],
+    [
+      "9",
+      "Conv2d"
+    ],
+    [
+      "10",
+      "BatchNorm2d"
+    ],
+    [
+      "11",
+      "Dropout"
+    ],
+    [
+      "12",
+      "ReLU"
+    ],
+    [
+      "13",
+      "Conv2d"
+    ],
+    [
+      "14",
+      "BatchNorm2d"
+    ],
+    [
+      "15",
+      "Dropout"
+    ],
+    [
+      "16",
+      "ReLU"
+    ],
+    [
+      "17",
+      "Conv2d"
+    ],
+    [
+      "18",
+      "BatchNorm2d"
+    ],
+    [
+      "19",
+      "Dropout"
+    ],
+    [
+      "20",
+      "ReLU"
+    ],
+    [
+      "21",
+      "Conv2d"
+    ],
+    [
+      "22",
+      "BatchNorm2d"
+    ],
+    [
+      "23",
+      "Dropout"
+    ],
+    [
+      "24",
+      "ReLU"
+    ],
+    [
+      "25",
+      "Conv2d"
+    ],
+    [
+      "26",
+      "BatchNorm2d"
+    ],
+    [
+      "27",
+      "Dropout"
+    ],
+    [
+      "28",
+      "ReLU"
+    ],
+    [
+      "29",
+      "Conv2d"
+    ],
+    [
+      "30",
+      "BatchNorm2d"
+    ],
+    [
+      "31",
+      "Dropout"
+    ],
+    [
+      "32",
+      "ReLU"
+    ],
+    [
+      "33",
+      "Conv2d"
+    ],
+    [
+      "34",
+      "BatchNorm2d"
+    ],
+    [
+      "35",
+      "Dropout"
+    ],
+    [
+      "36",
+      "ReLU"
+    ],
+    [
+      "37",
+      "Conv2d"
+    ],
+    [
+      "38",
+      "BatchNorm2d"
+    ],
+    [
+      "39",
+      "Dropout"
+    ],
+    [
+      "40",
+      "ReLU"
+    ],
+    [
+      "41",
+      "Conv2d"
+    ],
+    [
+      "42",
+      "BatchNorm2d"
+    ],
+    [
+      "43",
+      "Dropout"
+    ],
+    [
+      "44",
+      "ReLU"
+    ],
+    [
+      "45",
+      "Conv2d"
+    ],
+    [
+      "46",
+      "BatchNorm2d"
+    ],
+    [
+      "47",
+      "Dropout"
+    ],
+    [
+      "48",
+      "ReLU"
+    ],
+    [
+      "49",
+      "CA_Block"
+    ],
+    [
+      "50",
+      "Flatten"
+    ],
+    [
+      "51",
+      "Dropout"
+    ],
+    [
+      "52",
+      "ReLU"
+    ],
+    [
+      "53",
+      "Linear"
+    ]
+  ],
+  "state_dict_keys": [
+    "net.0.weight",
+    "net.1.bias",
+    "net.1.num_batches_tracked",
+    "net.1.running_mean",
+    "net.1.running_var",
+    "net.1.weight",
+    "net.10.bias",
+    "net.10.num_batches_tracked",
+    "net.10.running_mean",
+    "net.10.running_var",
+    "net.10.weight",
+    "net.13.weight",
+    "net.14.bias",
+    "net.14.num_batches_tracked",
+    "net.14.running_mean",
+    "net.14.running_var",
+    "net.14.weight",
+    "net.17.weight",
+    "net.18.bias",
+    "net.18.num_batches_tracked",
+    "net.18.running_mean",
+    "net.18.running_var",
+    "net.18.weight",
+    "net.21.weight",
+    "net.22.bias",
+    "net.22.num_batches_tracked",
+    "net.22.running_mean",
+    "net.22.running_var",
+    "net.22.weight",
+    "net.25.weight",
+    "net.26.bias",
+    "net.26.num_batches_tracked",
+    "net.26.running_mean",
+    "net.26.running_var",
+    "net.26.weight",
+    "net.29.weight",
+    "net.30.bias",
+    "net.30.num_batches_tracked",
+    "net.30.running_mean",
+    "net.30.running_var",
+    "net.30.weight",
+    "net.33.weight",
+    "net.34.bias",
+    "net.34.num_batches_tracked",
+    "net.34.running_mean",
+    "net.34.running_var",
+    "net.34.weight",
+    "net.37.weight",
+    "net.38.bias",
+    "net.38.num_batches_tracked",
+    "net.38.running_mean",
+    "net.38.running_var",
+    "net.38.weight",
+    "net.4.F_h.weight",
+    "net.4.F_w.weight",
+    "net.4.bn.bias",
+    "net.4.bn.num_batches_tracked",
+    "net.4.bn.running_mean",
+    "net.4.bn.running_var",
+    "net.4.bn.weight",
+    "net.4.conv_1x1.weight",
+    "net.41.weight",
+    "net.42.bias",
+    "net.42.num_batches_tracked",
+    "net.42.running_mean",
+    "net.42.running_var",
+    "net.42.weight",
+    "net.45.weight",
+    "net.46.bias",
+    "net.46.num_batches_tracked",
+    "net.46.running_mean",
+    "net.46.running_var",
+    "net.46.weight",
+    "net.49.F_h.weight",
+    "net.49.F_w.weight",
+    "net.49.bn.bias",
+    "net.49.bn.num_batches_tracked",
+    "net.49.bn.running_mean",
+    "net.49.bn.running_var",
+    "net.49.bn.weight",
+    "net.49.conv_1x1.weight",
+    "net.5.weight",
+    "net.53.bias",
+    "net.53.weight",
+    "net.6.bias",
+    "net.6.num_batches_tracked",
+    "net.6.running_mean",
+    "net.6.running_var",
+    "net.6.weight",
+    "net.9.weight"
+  ],
+  "quirks": [
+    "AlexNet.modules() is overridden to return (self.net, 'AlexNet_deep'); anything calling .modules()/.named_modules() on the top module breaks; children()-based paths (to/eval/train/apply/state_dict) are unaffected",
+    "no forward() on AlexNet; inference goes through model.net",
+    "final Linear has bias (package model uses bias=False)"
+  ]
+}

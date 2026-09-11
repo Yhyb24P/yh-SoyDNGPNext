@@ -1,0 +1,7 @@
+VCF: /home/yhshy/git_files/SoyDNGPNext/data/10_test_examples.vcf
+genotype shape: (10, 42195) | dtype: int32 int32
+PASS genotype matrix exact
+PASS sample IDs exact ordered (10)
+PASS SNP IDs exact ordered (42195)
+PASS one_hot np.array_equal, shape (10, 3, 206, 206) float32
+G2.5 full-VCF parity PASSED -> G2 CLOSED

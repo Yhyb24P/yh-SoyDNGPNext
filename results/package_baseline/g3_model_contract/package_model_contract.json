@@ -1,0 +1,367 @@
+{
+  "model": "package yaml model",
+  "source": "soydngpnext/data/model.yaml @ upstream-legacy (ebda01d)",
+  "built_with": "remodel('soydngpnext/data/model.yaml', num_classes)",
+  "input_shape": [
+    2,
+    3,
+    206,
+    206
+  ],
+  "regression": {
+    "num_classes": 1,
+    "output_shape": [
+      2,
+      1
+    ],
+    "output_finite": true,
+    "backward": {
+      "loss_finite": true,
+      "grads_finite": true,
+      "params_with_grad": 37
+    }
+  },
+  "classification": {
+    "num_classes": 9,
+    "output_shape": [
+      2,
+      9
+    ],
+    "output_finite": true,
+    "backward": {
+      "loss_finite": true,
+      "grads_finite": true,
+      "params_with_grad": 37
+    }
+  },
+  "intermediate_shapes": {
+    "0": [
+      2,
+      32,
+      206,
+      206
+    ],
+    "1": [
+      2,
+      32,
+      206,
+      206
+    ],
+    "2": [
+      2,
+      64,
+      103,
+      103
+    ],
+    "3": [
+      2,
+      64,
+      103,
+      103
+    ],
+    "4": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "5": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "6": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "7": [
+      2,
+      64,
+      52,
+      52
+    ],
+    "8": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "9": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "10": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "11": [
+      2,
+      128,
+      52,
+      52
+    ],
+    "12": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "13": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "14": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "15": [
+      2,
+      256,
+      26,
+      26
+    ],
+    "16": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "17": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "18": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "19": [
+      2,
+      512,
+      13,
+      13
+    ],
+    "20": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "21": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "22": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "23": [
+      2,
+      1024,
+      7,
+      7
+    ],
+    "24": [
+      2,
+      1
+    ]
+  },
+  "flatten_features": 50176,
+  "total_parameters": 18147104,
+  "trainable_parameters": 18147104,
+  "module_names": [
+    [
+      "0",
+      "CNN_Block"
+    ],
+    [
+      "1",
+      "ReLU_"
+    ],
+    [
+      "2",
+      "CNN_Block"
+    ],
+    [
+      "3",
+      "ReLU_"
+    ],
+    [
+      "4",
+      "CNN_Block"
+    ],
+    [
+      "5",
+      "ReLU_"
+    ],
+    [
+      "6",
+      "CNN_Block"
+    ],
+    [
+      "7",
+      "ReLU_"
+    ],
+    [
+      "8",
+      "CNN_Block"
+    ],
+    [
+      "9",
+      "ReLU_"
+    ],
+    [
+      "10",
+      "CNN_Block"
+    ],
+    [
+      "11",
+      "ReLU_"
+    ],
+    [
+      "12",
+      "CNN_Block"
+    ],
+    [
+      "13",
+      "ReLU_"
+    ],
+    [
+      "14",
+      "CNN_Block"
+    ],
+    [
+      "15",
+      "ReLU_"
+    ],
+    [
+      "16",
+      "CNN_Block"
+    ],
+    [
+      "17",
+      "ReLU_"
+    ],
+    [
+      "18",
+      "CNN_Block"
+    ],
+    [
+      "19",
+      "ReLU_"
+    ],
+    [
+      "20",
+      "CNN_Block"
+    ],
+    [
+      "21",
+      "ReLU_"
+    ],
+    [
+      "22",
+      "CNN_Block"
+    ],
+    [
+      "23",
+      "ReLU_"
+    ],
+    [
+      "24",
+      "Linear_"
+    ]
+  ],
+  "state_dict_keys": [
+    "0.block.0.weight",
+    "0.block.1.bias",
+    "0.block.1.num_batches_tracked",
+    "0.block.1.running_mean",
+    "0.block.1.running_var",
+    "0.block.1.weight",
+    "10.block.0.weight",
+    "10.block.1.bias",
+    "10.block.1.num_batches_tracked",
+    "10.block.1.running_mean",
+    "10.block.1.running_var",
+    "10.block.1.weight",
+    "12.block.0.weight",
+    "12.block.1.bias",
+    "12.block.1.num_batches_tracked",
+    "12.block.1.running_mean",
+    "12.block.1.running_var",
+    "12.block.1.weight",
+    "14.block.0.weight",
+    "14.block.1.bias",
+    "14.block.1.num_batches_tracked",
+    "14.block.1.running_mean",
+    "14.block.1.running_var",
+    "14.block.1.weight",
+    "16.block.0.weight",
+    "16.block.1.bias",
+    "16.block.1.num_batches_tracked",
+    "16.block.1.running_mean",
+    "16.block.1.running_var",
+    "16.block.1.weight",
+    "18.block.0.weight",
+    "18.block.1.bias",
+    "18.block.1.num_batches_tracked",
+    "18.block.1.running_mean",
+    "18.block.1.running_var",
+    "18.block.1.weight",
+    "2.block.0.weight",
+    "2.block.1.bias",
+    "2.block.1.num_batches_tracked",
+    "2.block.1.running_mean",
+    "2.block.1.running_var",
+    "2.block.1.weight",
+    "20.block.0.weight",
+    "20.block.1.bias",
+    "20.block.1.num_batches_tracked",
+    "20.block.1.running_mean",
+    "20.block.1.running_var",
+    "20.block.1.weight",
+    "22.block.0.weight",
+    "22.block.1.bias",
+    "22.block.1.num_batches_tracked",
+    "22.block.1.running_mean",
+    "22.block.1.running_var",
+    "22.block.1.weight",
+    "24.linear.3.weight",
+    "4.block.0.weight",
+    "4.block.1.bias",
+    "4.block.1.num_batches_tracked",
+    "4.block.1.running_mean",
+    "4.block.1.running_var",
+    "4.block.1.weight",
+    "6.block.0.weight",
+    "6.block.1.bias",
+    "6.block.1.num_batches_tracked",
+    "6.block.1.running_mean",
+    "6.block.1.running_var",
+    "6.block.1.weight",
+    "8.block.0.weight",
+    "8.block.1.bias",
+    "8.block.1.num_batches_tracked",
+    "8.block.1.running_mean",
+    "8.block.1.running_var",
+    "8.block.1.weight"
+  ]
+}

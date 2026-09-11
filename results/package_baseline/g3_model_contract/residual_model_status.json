@@ -1,0 +1,18 @@
+{
+  "model": "soydngpnext/SoyDNGP_res.py :: SoyDNGP",
+  "MODEL_VARIANT": "POST_PUBLICATION_RESIDUAL",
+  "REPRODUCTION_ROLE": "SECONDARY",
+  "import": "ok",
+  "instantiate": "ok: SoyDNGP(dropout=0.3)",
+  "forward_on_expected_input": {
+    "input_shape": [
+      1,
+      3,
+      206,
+      206
+    ],
+    "result": "RuntimeError: The expanded size of the tensor (206) must match the existing size (322) at non-singleton dimension 2.  Target sizes: [1, 32, 206, 206].  Tensor sizes: [1, 32, 322, 1]",
+    "finding": "ca1 = CA_Block(32, 322, 322): h/w=322 exceeds the 206x206 spatial size, expand_as fails; not executable on the expected input, excluded from experiments"
+  },
+  "excluded_from_experiments": true
+}
