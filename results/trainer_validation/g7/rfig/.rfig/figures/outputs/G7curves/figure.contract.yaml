@@ -1,0 +1,52 @@
+schema_version: '2.0'
+figure_id: G7curves
+claim:
+  statement: Over 150 training epochs, held-out protein PCC and maturity-group macro-F1 rise and then plateau, consistently across 3 cross-validation folds.
+  scope: result
+  evidence_panel_ids: [protein, mg]
+journal_context:
+  publisher: springer_nature
+  journal: nature
+  article_type: primary_research
+  submission_phase: final
+artifact_class: data_visualization
+sources:
+  - source_id: curves
+    kind: csv
+    path: g7_curves.csv
+    scientific_role: primary
+transformations: []
+statistics:
+  units:
+    experimental_unit: cv_fold
+  uncertainty: {}
+panels:
+  - id: protein
+    purpose: 蛋白（回归）：逐训练轮次的留出集 PCC，每条线为一个交叉验证折。
+    plot: {type: line, source: curves, x: epoch, y: protein_pcc, group: fold}
+    axes: {x_label: 训练轮次, y_label: "皮尔逊相关系数（蛋白）"}
+    encoding: {color: fold, marker: fold}
+    legend: {show: true}
+  - id: mg
+    purpose: 成熟度组（分类）：逐训练轮次的留出集宏平均 F1，每条线为一个交叉验证折。
+    plot: {type: line, source: curves, x: epoch, y: mg_f1, group: fold}
+    axes: {x_label: 训练轮次, y_label: "宏平均 F1（成熟度组）"}
+    encoding: {color: fold, marker: fold}
+    legend: {show: true}
+layout: {preset: single_column}
+accessibility: {redundant_group_encoding: true}
+ai_usage:
+  - stage: rendering
+    capability: deterministic_plot
+    tool: matplotlib
+    affects_pixels: true
+    affects_data: false
+assets: []
+export:
+  formats: [png, pdf, svg]
+  output_dir: outputs/G7curves
+  width_mm: 183
+  height_mm: 150
+  dpi: 450
+provenance:
+  require_git_state: false

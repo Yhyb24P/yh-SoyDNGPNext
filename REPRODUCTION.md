@@ -71,5 +71,17 @@ T-series (T1, T2, ...) in the corrected trainer (G4).
   reported but not gated (slow bias-free head; convergence is G7's job).
 - Pipeline: D0-Raw(CLOSED) -> D1(DONE) -> D2(DONE) -> D3(DONE) -> G6(DONE) ->
   G7(paper-faithful baseline) -> G8(corrected/fair baseline).
-- NEXT: G7 (10-fold x 150 epochs, paper-faithful baseline). ONNX export of the
-  author's .pt weights (opset <= 26) can run in parallel.
+- G7 IN PROGRESS (started 2026-09-11, paused for visualization, resumed
+  2026-09-12): paper-faithful baseline, 2-trait pilot
+  (protein regression + maturity_group classification, 10 levels), 10-fold x
+  150 epochs, PAPER_REPRO, full D3 matrix (15,899). Script
+  scripts/g7_paper_baseline.py (quick = 2-fold x 10-ep harness check,
+  full = 10-fold x 150-ep). Launched detached (setsid) with per-fold
+  checkpointing (results/trainer_validation/g7/g7_progress.jsonl) so a
+  machine suspend is resumable; resume skips completed folds; watchdog
+  tools/watch_g7_training.sh (user-installed crontab, */10) auto-relaunches.
+  ~6 s/epoch. Per-epoch training-curve visualization: scripts/plot_g7_curves.py
+  (static PNG) + rfig contract results/trainer_validation/g7/rfig/
+  (double-column 183 mm, CJK labels via RFIG_FONT -> g7_curves_rfig.png).
+- NEXT after G7: expand to all 23 traits (optional), then G8. ONNX export of
+  the author's .pt weights (opset <= 26) can run in parallel.

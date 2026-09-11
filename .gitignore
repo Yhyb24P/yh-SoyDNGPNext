@@ -4,3 +4,5 @@ __pycache__/
 # The gate evidence is recorded in the sibling *.json; the .pt is reproducible
 # by re-running scripts/g5_microfit.py.
 *.pt
+# G7 training run log (appends during the run; not a stable artifact).
+results/trainer_validation/g7/g7_run.log

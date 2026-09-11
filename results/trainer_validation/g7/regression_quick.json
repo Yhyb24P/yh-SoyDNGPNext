@@ -1,0 +1,42 @@
+{
+  "gate": "g7_protein",
+  "trait": "protein",
+  "task": "regression",
+  "n_samples": 15899,
+  "n_folds": 2,
+  "epochs": 10,
+  "seed": 0,
+  "batch": 64,
+  "lr_backbone": 0.0001,
+  "lr_head": 3e-06,
+  "loss": "mse",
+  "metric": "pcc",
+  "per_fold": [
+    {
+      "fold": 0,
+      "n_train": 7949,
+      "n_test": 7950,
+      "final_epoch_metric": 0.05319792835794955,
+      "best_epoch_metric": 0.14261151757757914,
+      "first_epoch_loss": 0.41261036973177134,
+      "final_epoch_loss": 0.3708821732336687,
+      "fold_seconds": 70.0
+    },
+    {
+      "fold": 1,
+      "n_train": 7950,
+      "n_test": 7949,
+      "final_epoch_metric": 0.11295055956758435,
+      "best_epoch_metric": 0.12961518259233587,
+      "first_epoch_loss": 0.3646363276430646,
+      "final_epoch_loss": 0.3703813482680411,
+      "fold_seconds": 62.6
+    }
+  ],
+  "final_metric_mean": 0.08307424396276694,
+  "final_metric_std": 0.029876315604817398,
+  "best_metric_mean": 0.1361133500849575,
+  "best_metric_std": 0.006498167492621637,
+  "total_seconds": 138.5,
+  "note": "per-fold metric is the held-out fold metric at the final (10) epoch (fixed schedule, paper-faithful); best_epoch_metric is the max over epochs (reference only)."
+}

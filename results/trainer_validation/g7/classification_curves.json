@@ -1,0 +1,64 @@
+{
+  "gate": "g7_maturity_group",
+  "trait": "maturity_group",
+  "task": "classification",
+  "n_samples": 15899,
+  "n_folds": 3,
+  "epochs": 150,
+  "seed": 0,
+  "batch": 64,
+  "lr_backbone": 0.0001,
+  "lr_head": 3e-06,
+  "loss": "cross_entropy",
+  "metric": "macro_f1",
+  "per_fold": [
+    {
+      "fold": 0,
+      "n_train": 10599,
+      "n_test": 5300,
+      "final_epoch_metric": 0.5605892595642532,
+      "best_epoch_metric": 0.5609737031181409,
+      "first_epoch_loss": 2.224725583193718,
+      "final_epoch_loss": 0.1663094235457433,
+      "fold_seconds": 1092.9
+    },
+    {
+      "fold": 1,
+      "n_train": 10599,
+      "n_test": 5300,
+      "final_epoch_metric": 0.5329705092261982,
+      "best_epoch_metric": 0.539910070853462,
+      "first_epoch_loss": 2.230254802830726,
+      "final_epoch_loss": 0.16622973655583623,
+      "fold_seconds": 1076.3
+    },
+    {
+      "fold": 2,
+      "n_train": 10600,
+      "n_test": 5299,
+      "final_epoch_metric": 0.5454170541552766,
+      "best_epoch_metric": 0.5593457068400618,
+      "first_epoch_loss": 2.234250896022005,
+      "final_epoch_loss": 0.16774346493325143,
+      "fold_seconds": 1067.4
+    }
+  ],
+  "final_metric_mean": 0.546325607648576,
+  "final_metric_std": 0.011293595372203778,
+  "best_metric_mean": 0.5534098269372215,
+  "best_metric_std": 0.009568878503116666,
+  "total_seconds": 3249.1,
+  "note": "per-fold metric is the held-out fold metric at the final (150) epoch (fixed schedule, paper-faithful); best_epoch_metric is the max over epochs (reference only).",
+  "mg_levels": [
+    "0",
+    "I",
+    "II",
+    "III",
+    "IV",
+    "IX",
+    "V",
+    "VI",
+    "VII",
+    "VIII"
+  ]
+}
