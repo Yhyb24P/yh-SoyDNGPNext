@@ -1,0 +1,53 @@
+# Provenance for the scientific dataset objects (D0).
+# Objects fetched from IndigoFloyd/SoybeanWebsite @ f724d9b
+# (fetched 2026-09-11 via gh-proxy.com; direct GitHub too slow on this network).
+
+fetched:
+  repo: IndigoFloyd/SoybeanWebsite
+  commit: f724d9b1974bb78b7832b191af99f589a2c5e549
+  date: 2026-09-11
+
+objects:
+  snp_order.txt:
+    original: predict/snp.txt
+    sha256: a57b8db4bdcc860f03845d363ac4f181af024e82993f9b3a68824109bfb1ee14
+    lines: 32033
+    note: >
+      Ordered SNP list (CHROM_POS format, same ID scheme as the reader).
+      The website code (dataprocess_predict.py) reorders any uploaded VCF
+      to this order (df[self.pos_list]); SNPs absent from the VCF are
+      imputed as './.' (code 3). 32033 entries; the paper claims 32032,
+      off-by-one unreconciled. Either way < 42436, so the 206x206 grid
+      is filled by wrap.
+  samples.tsv:
+    original: data.csv (column: acid)
+    sha256: 1a2342334e89b7b9a8b4edba4f5414cd44b8c61d195e1a20a3b96e3d0f92e437
+    samples: 20506
+  phenotype_table.csv:
+    original: data.csv
+    sha256: 527bfe545f4d2d98928aaebaec74d19112fcccce954d0f25f3ad6e3041c5a57b
+    samples: 20506
+    traits: 24
+    note: >
+      20506 samples x 24 traits (10 quality + 14 quantitative) plus
+      CommonName. Normalization ranges for the quantitative traits are in
+      the repo's predict/n_trait.txt (e.g. protein 31.7-57.9, matching the
+      package n_trait.yaml). Level mappings for quality traits in
+      predict/p_trait.txt.
+
+weights:
+  original: predict/weight/*.pt (30 files, ~2.0 GB, kept in the cloned repo only)
+  note: >
+    Author's pretrained .pt checkpoints, one per trait. Export to ONNX
+    (opset <= 26 for ORT 1.30) to feed forward.py; removes the need for
+    utils.PRETRAIN_SERVER.
+
+open_questions:
+  - Full genotype VCF (32033 SNPs x 20506 samples) not found on
+    xtlab.hzau.edu.cn/downloads/ (directory listing disabled; only
+    10_test_examples.vcf confirmed reachable). Candidate sources: the
+    paper's data availability statement, or contacting the authors.
+  - 32033 (snp.txt) vs 32032 (paper) off-by-one.
+  - Paper training-set QC/filtering rules unknown; the website imputes
+    missing SNPs as './.' at inference, but the training-time filtering
+    (MAF, call rate, sample QC) is not documented in the repo.

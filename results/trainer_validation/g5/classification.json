@@ -1,0 +1,15 @@
+{
+  "gate": "g5_classification",
+  "n_samples": 32,
+  "epochs": 100,
+  "lr": 0.001,
+  "loss": "cross_entropy",
+  "train_accuracy": 1.0,
+  "macro_f1": 1.0,
+  "best_metric": 1.0,
+  "train_accuracy_ge_0.98": true,
+  "macro_f1_ge_0.98": true,
+  "preds_finite": true,
+  "reload_prediction_identical": true,
+  "pass": true
+}

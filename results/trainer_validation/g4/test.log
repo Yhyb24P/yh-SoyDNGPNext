@@ -1,0 +1,47 @@
+== tests/test_regression_target_contract.py ==
+PASS test_no_broadcasting_across_batch_sizes
+PASS test_target_values_preserved_not_zeroed
+all regression target contract tests passed
+
+exit code: 0
+
+== tests/test_classification_target_contract.py ==
+PASS test_float_labels_cast_to_int64
+PASS test_integer_labels_reach_loss_as_int64
+all classification target contract tests passed
+
+exit code: 0
+
+== tests/test_metrics_contract.py ==
+PASS test_accuracy_precision_recall_match_sklearn
+PASS test_full_epoch_collection
+PASS test_macro_f1_matches_sklearn
+PASS test_mse_smooth_l1
+PASS test_pcc_degenerate_returns_nan
+PASS test_pcc_matches_numpy_reference
+all metric contract tests passed
+
+exit code: 0
+
+== tests/test_split_contract.py ==
+PASS test_package_legacy_70_30_holdout
+PASS test_package_legacy_stratified_for_labels
+PASS test_paper_repro_10_fold_cv
+PASS test_protocol_members_separated
+all split contract tests passed
+
+exit code: 0
+
+== tests/test_trait_state_isolation.py ==
+PASS test_histories_and_best_scores_are_per_trait
+PASS test_one_fresh_model_per_trait
+PASS test_optimizers_bound_to_own_models
+all trait state isolation tests passed
+
+exit code: 0
+
+== tests/test_checkpoint_roundtrip.py ==
+PASS test_checkpoint_roundtrip_exact
+all checkpoint roundtrip tests passed
+
+exit code: 0

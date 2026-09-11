@@ -1,0 +1,37 @@
+# Protocol: scientific reproduction (10-fold CV).
+# Hyperparameters without paper evidence are marked null/unresolved,
+# never guessed defaults.
+protocol: paper_repro
+
+model:
+  name: soydngp_ca
+  source: IndigoFloyd/SoybeanWebsite/AlexNet_206.py @ f724d9b
+  port: src/paper_model/soydngp_ca.py
+
+input:
+  channels: 3
+  height: 206
+  width: 206
+  resize: wrap
+
+cv:
+  folds: 10
+  shuffle: true
+  seed: 0
+
+regression:
+  loss: smooth_l1
+  beta: 0.1
+  optimizer: adam
+  weight_decay: 1.0e-5
+  learning_rate: null
+  status: unresolved
+
+classification:
+  loss: cross_entropy
+  optimizer: adam
+  weight_decay: 1.0e-5
+  learning_rate: null
+  status: unresolved
+
+epochs: 150

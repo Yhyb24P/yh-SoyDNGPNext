@@ -1,0 +1,13 @@
+{
+  "regression_float32_B1": true,
+  "no_broadcasting": true,
+  "classification_int64_B": true,
+  "full_epoch_metrics": true,
+  "pcc_matches_reference": true,
+  "macro_f1_matches_reference": true,
+  "package_70_30_protocol_frozen": true,
+  "paper_10fold_protocol_frozen": true,
+  "trait_state_isolated": true,
+  "checkpoint_roundtrip_exact": true,
+  "all_pass": true
+}

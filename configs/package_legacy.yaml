@@ -1,0 +1,27 @@
+# Protocol: reproduce the upstream software behavior.
+# Values are taken from upstream soydngpnext/train.py defaults, not guesses:
+#   Adam with no lr argument (torch default 1e-3), weight_decay=1e-5,
+#   SmoothL1Loss / CrossEntropyLoss, default 5 epochs, 70/30 holdout.
+protocol: package_legacy
+
+split:
+  type: holdout
+  train_fraction: 0.7
+  seed: 0
+
+model:
+  source: upstream_model_yaml   # soydngpnext/data/model.yaml via remodel()
+
+regression:
+  loss: smooth_l1
+  optimizer: adam
+  weight_decay: 1.0e-5
+  learning_rate: 1.0e-3
+  epochs: 5
+
+classification:
+  loss: cross_entropy
+  optimizer: adam
+  weight_decay: 1.0e-5
+  learning_rate: 1.0e-3
+  epochs: 5
