@@ -16,9 +16,10 @@ objects:
       Ordered SNP list (CHROM_POS format, same ID scheme as the reader).
       The website code (dataprocess_predict.py) reorders any uploaded VCF
       to this order (df[self.pos_list]); SNPs absent from the VCF are
-      imputed as './.' (code 3). 32033 entries; the paper claims 32032,
-      off-by-one unreconciled. Either way < 42436, so the 206x206 grid
-      is filled by wrap.
+      imputed as './.' (code 3). 32033 source lines; pd.read_csv consumes
+      line 1 as the header, so the effective list is 32032 (= the paper's
+      figure; the off-by-one is resolved, see d1_paper_snp_contract below).
+      Either way < 42436, so the 206x206 grid is filled by wrap.
   samples.tsv:
     original: data.csv (column: acid)
     sha256: 1a2342334e89b7b9a8b4edba4f5414cd44b8c61d195e1a20a3b96e3d0f92e437
@@ -42,12 +43,71 @@ weights:
     (opset <= 26 for ORT 1.30) to feed forward.py; removes the need for
     utils.PRETRAIN_SERVER.
 
+soysnp50k_gnm2:
+  # Upstream public genotype matrix (D0), distinct from the paper's 32033-SNP matrix.
+  # Downloaded 2026-09-11 via the 18083 proxy (direct US servers too slow from this network).
+  source:
+    url: https://data.soybase.org/Glycine/max/diversity/Wm82.gnm2.div.Song_Hyten_2015/glyma.Wm82.gnm2.div.Song_Hyten_2015.vcf.gz
+    provider: SoyBase (Glycine.max diversity, Song & Hyten 2015)
+    assembly: Wm82.gnm2
+    dataset: Song_Hyten_2015_SoySNP50K
+  local: data/raw/soybase_snp50k_gnm2/ (outer workspace, not in this repo)
+  files:
+    vcf:
+      name: glyma.Wm82.gnm2.div.Song_Hyten_2015.vcf.gz
+      bytes: 144475859
+      md5_official: 708076e4197fa7b6c0f49427bcad0d96   # verified against SoyBase CHECKSUM
+      sha256: bfb71705228cfc8639941f89b4e62a4d23a5c5e9d74703caebb6dfc1e8ae279a
+    marker_map:
+      name: glyma.Wm82.gnm2.div.Song_Hyten_2015.markerMap.txt.gz
+      md5_official: d848fe2bbf58ad66cb19948b9ccdc143
+  counts:
+    samples: 20087
+    variants: 41726        # VCF and markerMap agree; the 42509 figure cited elsewhere does not match this file
+  role: >
+    upstream_public_genotype_matrix. This is the raw SoySNP50K chip matrix on the
+    gnm2 assembly, NOT the paper's final 32032/32033-SNP training matrix. To build
+    a comparable dataset it must be intersected with the paper's exact SNP list
+    (data_manifest/snp_order.txt), with phasing/imputation handled, and aligned to
+    the phenotype samples (samples.tsv). Different assemblies (a4/a5/a6) are
+    coordinate-mapped versions of the same chip and must not be mixed without
+    liftover plus per-marker reconciliation.
+
+d1_paper_snp_contract:
+  # D1: ordered 32,032 paper-SNP contract vs the raw 41,726 variants.
+  # Built by scripts/d1_paper_snp_contract.py; outputs in results/data_contract/d1/.
+  source_lines: 32033
+  effective: 32032          # pd.read_csv consumes line 1 as the header
+  raw_variants: 41726
+  matched: 31673
+  missing: 359             # imputed './.' -> code 3 (author default, no Beagle)
+  raw_unselected: 10053
+  join_key: (chromosome number, gnm2 position); raw ss-ID recorded as cross-ref
+  outputs:
+    contract: results/data_contract/d1/d1_contract.tsv
+    missing: results/data_contract/d1/d1_missing.tsv
+    raw_unselected: results/data_contract/d1/d1_raw_unselected.tsv
+    summary: results/data_contract/d1/d1_summary.json
+
 open_questions:
-  - Full genotype VCF (32033 SNPs x 20506 samples) not found on
+  - SNP reconciliation (D1) is done: the paper's 32032 effective SNPs are
+    joined to the raw 41726 on (chrom, gnm2 pos) -> 31673 matched, 359
+    missing (imputed './.' -> code 3, author default no-Beagle). See
+    d1_paper_snp_contract above.
+  - Sample x phenotype alignment (D2) is done: 16960 exact matches, 1441
+    zero-pad candidate pairs (PI/FC differ only by leading zeros), 1686
+    vcf_only, 2105 phenotype_only. Phenotype missingness is row-level, so all
+    23 traits share one non-missing cohort. Decision (results/data_contract/
+    d2/d2_decision.json, user 2026-09-11): ACCEPT the 1441 zero-pad pairs ->
+    matched cohort 18401, non-missing 15899. See results/data_contract/d2/.
+  - D3 done: paper input matrix built (data/derived/d3_matrix/d3_matrix.npy,
+    15899 x 32032 int8; 31673 SNPs from the reduced VCF, 359 missing -> code 3,
+    one-hot 206x206 wrap verified). See results/data_contract/d3/.
+  - The paper's own 32033-SNP x 20506-sample VCF was not found on
     xtlab.hzau.edu.cn/downloads/ (directory listing disabled; only
-    10_test_examples.vcf confirmed reachable). Candidate sources: the
-    paper's data availability statement, or contacting the authors.
-  - 32033 (snp.txt) vs 32032 (paper) off-by-one.
+    10_test_examples.vcf confirmed reachable).
   - Paper training-set QC/filtering rules unknown; the website imputes
     missing SNPs as './.' at inference, but the training-time filtering
     (MAF, call rate, sample QC) is not documented in the repo.
+  - RESOLVED: 32033 (snp.txt source lines) vs 32032 (paper) was a pandas
+    header off-by-one; pd.read_csv consumes line 1, so effective = 32032.

@@ -1,0 +1,12 @@
+{
+  "stage": "D2",
+  "decision": "accept_zero_pad_candidates",
+  "decided_at": "2026-09-11",
+  "decided_by": "user",
+  "rationale": "PI/FC accession IDs differ only by leading-zero padding; symmetric 1441 pairs on both sides; same USDA PI / FC lines.",
+  "exact_matched": 16960,
+  "zero_pad_accepted": 1441,
+  "accepted_cohort": 18401,
+  "accepted_cohort_non_missing": 15899,
+  "note": "Accepted cohort = exact-matched union zero-pad phenotype-side IDs. Non-missing is uniform across all 23 traits (row-level missingness)."
+}

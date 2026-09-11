@@ -1,0 +1,72 @@
+{
+  "stage": "D3",
+  "description": "Paper input matrix (accepted cohort x 32,032 ordered SNPs)",
+  "inputs": {
+    "reduced_vcf": {
+      "path": "data/derived/d3_reduced.vcf.gz",
+      "sha256": "a587609590c4a2b052dd1c26c4a20013c686be1d28360e7aae87d6e1eda0d4ae",
+      "samples": 15899,
+      "variants": 31673
+    },
+    "d1_contract": {
+      "path": "upstream/results/data_contract/d1/d1_contract.tsv",
+      "sha256": "995dfbf468f8c62c4b207a8b472cf68e9dc97d1e99a48e31f861a9a717954297"
+    }
+  },
+  "counts": {
+    "samples": 15899,
+    "snps_total": 32032,
+    "snps_matched": 31673,
+    "snps_missing_filled_code3": 359,
+    "filled_from_vcf": 31673
+  },
+  "encoding": "legacy frozen: 1/1,1|1 -> 1; 0/1,0|1 -> 2; else (incl './.') -> 3",
+  "raw_gt_breakdown": {
+    "note": "3-char GT prefix counts over the 31,673 matched SNPs x 15,899 samples in the reduced VCF. Only 0/0, 1/1, 0/1 and './.' occur (no 1/0, no | forms), so legacy code2 == raw 0/1 count. The legacy rule maps 1/0 -> 3 (alt-first het not recognized as 2).",
+    "0/0": 287914152,
+    "1/1": 215549666,
+    "0/1": 63681,
+    "./.": 41528,
+    "other": 0
+  },
+  "missing_fill": "359 absent SNPs -> code 3 (author default, no Beagle)",
+  "grid": "32,032 < 42,436 -> one-hot row wrapped (tiled) to fill 206x206",
+  "outputs": {
+    "matrix": "data/derived/d3_matrix/d3_matrix.npy",
+    "snp_order": "data/derived/d3_matrix/d3_snp_order.txt",
+    "sample_order": "data/derived/d3_matrix/d3_sample_order.txt"
+  },
+  "preprocessing_parity": {
+    "one_hot_shape": [
+      8,
+      3,
+      206,
+      206
+    ],
+    "one_hot_dtype": "float32",
+    "expected_shape": [
+      8,
+      3,
+      206,
+      206
+    ],
+    "grid_cells": 42436,
+    "n_snp": 32032,
+    "wrap": true,
+    "far_corner_sample0": [
+      0.0,
+      1.0,
+      1.0
+    ],
+    "code_range": [
+      1,
+      3
+    ],
+    "code_counts": {
+      "1": 215549666,
+      "2": 63681,
+      "3": 293663421
+    },
+    "pass": true
+  }
+}

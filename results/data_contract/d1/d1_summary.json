@@ -1,0 +1,34 @@
+{
+  "stage": "D1",
+  "description": "Ordered 32,032 paper-SNP contract vs raw 41,726 SoySNP50K gnm2 variants",
+  "inputs": {
+    "snp_order": {
+      "path": "upstream/data_manifest/snp_order.txt",
+      "sha256": "a57b8db4bdcc860f03845d363ac4f181af024e82993f9b3a68824109bfb1ee14",
+      "lines": 32033
+    },
+    "raw_variant_order": {
+      "path": "data/raw/soybase_snp50k_gnm2/variant_order.tsv",
+      "sha256": "4038c994534853c3a849d7e9571deb27a8feac2db36dbd724aab88340d5cf0d3",
+      "variants": 41726
+    }
+  },
+  "effective_semantics": "pd.read_csv('snp.txt') with default header=0 consumes line 1 as the column header; pos_list.iloc[:,0].to_list() therefore yields lines[1:] = 32,032 SNPs (the paper's claimed figure). Consumed header line: Chr02_13739700 (not an effective SNP).",
+  "first_effective": "Chr08_23000081",
+  "last_effective": "Chr15_30541555",
+  "join_key": "(chromosome number, gnm2 position); raw ss-ID recorded as cross-reference",
+  "gate": {
+    "paper_snp_source_lines": 32033,
+    "paper_snp_effective": 32032,
+    "raw_vcf_variants": 41726,
+    "contract_rows": 32032,
+    "order_preserved": true,
+    "duplicated_in_paper": 0,
+    "duplicated_in_raw_chrom_pos": 0,
+    "matched": 31673,
+    "missing": 359,
+    "match_rate": 0.988792,
+    "raw_unselected": 10053,
+    "pass": true
+  }
+}

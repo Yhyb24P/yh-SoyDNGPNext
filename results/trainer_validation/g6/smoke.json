@@ -1,0 +1,6 @@
+{
+  "device": "cuda",
+  "regression": true,
+  "classification": true,
+  "pass": true
+}

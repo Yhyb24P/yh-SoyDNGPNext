@@ -1,0 +1,182 @@
+{
+  "stage": "D2",
+  "description": "Sample x phenotype alignment: VCF 20,087 vs phenotype 20,506",
+  "inputs": {
+    "vcf_samples": {
+      "path": "data/raw/soybase_snp50k_gnm2/sample_ids.txt",
+      "sha256": "0d0dc6b501d5b1b9f16d220789ff141a879238b103acddcc52f607c0f6d358e2",
+      "count": 20087
+    },
+    "pheno_samples": {
+      "path": "upstream/data_manifest/samples.tsv",
+      "sha256": "1a2342334e89b7b9a8b4edba4f5414cd44b8c61d195e1a20a3b96e3d0f92e437",
+      "count": 20506
+    },
+    "phenotype_table": {
+      "path": "upstream/data_manifest/phenotype_table.csv",
+      "sha256": "527bfe545f4d2d98928aaebaec74d19112fcccce954d0f25f3ad6e3041c5a57b",
+      "encoding": "utf-8-sig"
+    }
+  },
+  "buckets": {
+    "vcf_total": 20087,
+    "pheno_total": 20506,
+    "duplicate_vcf": 0,
+    "duplicate_pheno": 0,
+    "matched_exact": 16960,
+    "ambiguous_zero_pad_pairs": 1441,
+    "vcf_only_residual": 1686,
+    "phenotype_only_residual": 2105
+  },
+  "rule": {
+    "exact": "identical string in both sources (ground truth)",
+    "zero_pad_candidate": "same alpha prefix + same integer digit value + same trailing suffix; differ only by leading zeros in the digit field. SURFACED, NOT accepted."
+  },
+  "decision_note": "If the 1441 zero-pad candidate pairs are accepted, the matched cohort grows from 16960 to 18401. Rejecting them keeps the strict exact-match cohort of 16960. Per-trait cohorts below are computed on the exact cohort only.",
+  "per_trait_missingness": {
+    "row_level": true,
+    "partial_missing_samples": 0,
+    "shared_non_missing_cohort": 14461,
+    "note": "Missingness is row-level: a sample has all 23 traits or none (0 partial-missing samples). All traits therefore share the same non-missing cohort of 14461 on the exact-matched set, so D3 needs one cohort, not a per-trait dropna."
+  },
+  "per_trait_cohort_on_exact": [
+    [
+      "MG",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "ST",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "FC",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "P_CLR",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "P_FRM",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "P_DENS",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "POD",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "SC_L",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "SC_CLR",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "H_CLR",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "protein",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "oil",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "Linoleic",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "Linolenic",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "eno",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "R1",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "R8",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "Hgt",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "Mat",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "Ldg",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "SQ",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "SdWgt",
+      16960,
+      14461,
+      2499
+    ],
+    [
+      "Yield",
+      16960,
+      14461,
+      2499
+    ]
+  ]
+}

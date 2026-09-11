@@ -39,7 +39,37 @@ T-series (T1, T2, ...) in the corrected trainer (G4).
 - F1 ACCEPTED: cuDF compatibility-only patch, no intended algorithmic change
 - G3 DONE: model contracts for the package yaml model, the paper CA model,
   and the 2025 residual variant (results/package_baseline/g3_model_contract/)
-- G4 BLOCKED BY G3: corrected training implementation (new code, upstream
-  Train untouched)
-- G5 BLOCKED BY G4: synthetic micro-overfit
-- D0 CAN RUN IN PARALLEL: scientific dataset recovery
+- G4 DONE: corrected trainer in src/soydngp_repro/ (T1-T4 contracts,
+  upstream Train untouched); all 10 contract gates PASS
+  (results/trainer_validation/g4/contract.json)
+- G5 DONE: synthetic micro-overfit, both gates PASS
+  (results/trainer_validation/g5/; regression PCC 0.9895, classification
+  acc 1.0 / macro-F1 1.0)
+- D0-Raw CLOSED: full SoySNP50K gnm2 VCF acquired + verified (20,087 samples
+  x 41,726 variants; MD5+SHA-256 in data_manifest/provenance.yaml
+  soysnp50k_gnm2). 41,726 is the authoritative raw fact (the 42,509 figure
+  cited elsewhere does not match this file).
+- D1 DONE: ordered 32,032 paper-SNP contract (results/data_contract/d1/).
+  32,033 source lines - 1 (pd.read_csv consumes line 1 as the header) =
+  32,032 effective (= the paper's figure; the old off-by-one is resolved).
+  Joined to the raw 41,726 on (chrom, gnm2 pos): 31,673 matched, 359 missing
+  (imputed './.' -> code 3, author default no-Beagle), 10,053 raw unselected.
+- D2 DONE: sample x phenotype alignment (results/data_contract/d2/). 16,960
+  exact matches; 1,441 zero-pad candidate pairs (PI/FC differ only by leading
+  zeros); 1,686 vcf_only, 2,105 phenotype_only; 0 duplicates. Phenotype
+  missingness is row-level (0 partial-missing), so all 23 traits share one
+  non-missing cohort. Decision (d2_decision.json, user 2026-09-11): ACCEPT the
+  1,441 zero-pad pairs -> matched cohort 18,401, non-missing 15,899.
+- D3 DONE: paper input matrix (data/derived/d3_matrix/d3_matrix.npy,
+  15,899 x 32,032 int8) + historical preprocessing parity PASS
+  (results/data_contract/d3/d3_manifest.json). 31,673 SNPs read from the
+  reduced VCF, 359 missing -> code 3; one-hot 206x206 wrap verified.
+- G6 DONE: real-data smoke test on the D3 matrix (1,024 subset x 50 epochs,
+  NOT 150). Pipeline-health gates PASS for both protein (regression) and
+  maturity_group (classification): finite loss/preds/grads, checkpoint reloads
+  to identical predictions (results/trainer_validation/g6/). Loss decrease is
+  reported but not gated (slow bias-free head; convergence is G7's job).
+- Pipeline: D0-Raw(CLOSED) -> D1(DONE) -> D2(DONE) -> D3(DONE) -> G6(DONE) ->
+  G7(paper-faithful baseline) -> G8(corrected/fair baseline).
+- NEXT: G7 (10-fold x 150 epochs, paper-faithful baseline). ONNX export of the
+  author's .pt weights (opset <= 26) can run in parallel.

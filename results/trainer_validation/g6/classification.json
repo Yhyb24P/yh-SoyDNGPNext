@@ -1,0 +1,33 @@
+{
+  "gate": "g6_classification",
+  "trait": "maturity_group",
+  "n_subset": 1024,
+  "n_train": 716,
+  "n_val": 308,
+  "epochs": 50,
+  "batch": 64,
+  "n_classes": 10,
+  "mg_levels": [
+    "0",
+    "I",
+    "II",
+    "III",
+    "IV",
+    "IX",
+    "V",
+    "VI",
+    "VII",
+    "VIII"
+  ],
+  "loss": "cross_entropy",
+  "first_epoch_loss": 2.355917124774869,
+  "final_epoch_loss": 1.9361421156195955,
+  "val_accuracy": 0.2597402597402597,
+  "val_macro_f1": 0.04134366925064599,
+  "loss_decreased": true,
+  "loss_finite": true,
+  "preds_finite": true,
+  "grads_finite": true,
+  "reload_prediction_identical": true,
+  "pass": true
+}
