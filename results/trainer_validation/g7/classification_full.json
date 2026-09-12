@@ -1,0 +1,134 @@
+{
+  "gate": "g7_maturity_group",
+  "trait": "maturity_group",
+  "task": "classification",
+  "n_samples": 15899,
+  "n_folds": 10,
+  "epochs": 150,
+  "seed": 0,
+  "batch": 64,
+  "lr_backbone": 0.0001,
+  "lr_head": 3e-06,
+  "loss": "cross_entropy",
+  "metric": "macro_f1",
+  "per_fold": [
+    {
+      "fold": 0,
+      "n_train": 14309,
+      "n_test": 1590,
+      "final_epoch_metric": 0.5364253496725467,
+      "best_epoch_metric": 0.5542784025341625,
+      "first_epoch_loss": 2.230041165031621,
+      "final_epoch_loss": 0.18034600381981494,
+      "fold_seconds": 1334.1
+    },
+    {
+      "fold": 1,
+      "n_train": 14309,
+      "n_test": 1590,
+      "final_epoch_metric": 0.5451829906728733,
+      "best_epoch_metric": 0.5722609758589821,
+      "first_epoch_loss": 2.215314418666892,
+      "final_epoch_loss": 0.17679268818196864,
+      "fold_seconds": 1366.0
+    },
+    {
+      "fold": 2,
+      "n_train": 14309,
+      "n_test": 1590,
+      "final_epoch_metric": 0.5578310989617218,
+      "best_epoch_metric": 0.5703677777001575,
+      "first_epoch_loss": 2.2413107172332642,
+      "final_epoch_loss": 0.17868556212109252,
+      "fold_seconds": 1372.6
+    },
+    {
+      "fold": 3,
+      "n_train": 14309,
+      "n_test": 1590,
+      "final_epoch_metric": 0.5778591768817098,
+      "best_epoch_metric": 0.5945844262126078,
+      "first_epoch_loss": 2.2378875223360137,
+      "final_epoch_loss": 0.1800848354414096,
+      "fold_seconds": 1335.4
+    },
+    {
+      "fold": 4,
+      "n_train": 14309,
+      "n_test": 1590,
+      "final_epoch_metric": 0.5340584281746464,
+      "best_epoch_metric": 0.550237252977362,
+      "first_epoch_loss": 2.2232973023075435,
+      "final_epoch_loss": 0.17394814022899183,
+      "fold_seconds": 1326.6
+    },
+    {
+      "fold": 5,
+      "n_train": 14309,
+      "n_test": 1590,
+      "final_epoch_metric": 0.5520130008917814,
+      "best_epoch_metric": 0.5680435660951899,
+      "first_epoch_loss": 2.212838331636155,
+      "final_epoch_loss": 0.1750912284638007,
+      "fold_seconds": 1323.7
+    },
+    {
+      "fold": 6,
+      "n_train": 14309,
+      "n_test": 1590,
+      "final_epoch_metric": 0.5475914804689869,
+      "best_epoch_metric": 0.5589639434298364,
+      "first_epoch_loss": 2.225183569666008,
+      "final_epoch_loss": 0.18044225163630231,
+      "fold_seconds": 1356.1
+    },
+    {
+      "fold": 7,
+      "n_train": 14309,
+      "n_test": 1590,
+      "final_epoch_metric": 0.5616626966682967,
+      "best_epoch_metric": 0.5710480447831705,
+      "first_epoch_loss": 2.2344934350581647,
+      "final_epoch_loss": 0.18401467503762545,
+      "fold_seconds": 1350.4
+    },
+    {
+      "fold": 8,
+      "n_train": 14309,
+      "n_test": 1590,
+      "final_epoch_metric": 0.5909037379025867,
+      "best_epoch_metric": 0.6017392126864075,
+      "first_epoch_loss": 2.235562292482628,
+      "final_epoch_loss": 0.17970918811786366,
+      "fold_seconds": 1333.3
+    },
+    {
+      "fold": 9,
+      "n_train": 14310,
+      "n_test": 1589,
+      "final_epoch_metric": 0.5406652700225911,
+      "best_epoch_metric": 0.5574482586283306,
+      "first_epoch_loss": 2.224351580571162,
+      "final_epoch_loss": 0.19118177491330668,
+      "fold_seconds": 1341.9
+    }
+  ],
+  "final_metric_mean": 0.554419323031774,
+  "final_metric_std": 0.017349030809152045,
+  "best_metric_mean": 0.5698971860906206,
+  "best_metric_std": 0.01593397246062433,
+  "total_seconds": 13489.4,
+  "note": "per-fold metric is the held-out fold metric at the final (150) epoch (fixed schedule, paper-faithful); best_epoch_metric is the max over epochs (reference only).",
+  "mg_levels": [
+    "0",
+    "I",
+    "II",
+    "III",
+    "IV",
+    "IX",
+    "V",
+    "VI",
+    "VII",
+    "VIII"
+  ]
+}
