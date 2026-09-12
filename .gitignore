@@ -1,8 +1,2 @@
-__pycache__/
-*.pyc
-# Large regenerable checkpoints (G5 micro-overfit best models, ~220 MB each).
-# The gate evidence is recorded in the sibling *.json; the .pt is reproducible
-# by re-running scripts/g5_microfit.py.
-*.pt
-# G7 training run log (appends during the run; not a stable artifact).
-results/trainer_validation/g7/g7_run.log
+/data/
+/QWEN.md
