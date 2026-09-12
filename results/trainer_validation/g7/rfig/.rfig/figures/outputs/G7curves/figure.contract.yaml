@@ -1,7 +1,7 @@
 schema_version: '2.0'
 figure_id: G7curves
 claim:
-  statement: Over 150 training epochs, held-out protein PCC and maturity-group macro-F1 rise and then plateau, consistently across 3 cross-validation folds.
+  statement: Over 150 training epochs, held-out protein PCC and maturity-group macro-F1 rise and then plateau, consistently across the 10 cross-validation folds of the PAPER_REPRO baseline.
   scope: result
   evidence_panel_ids: [protein, mg]
 journal_context:

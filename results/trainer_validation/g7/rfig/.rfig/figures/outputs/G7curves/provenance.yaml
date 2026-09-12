@@ -1,10 +1,10 @@
-contract_sha256: 63945e02c10f298bb409e821ff29b741b96492751b03929e09e0fc82946552b0
+contract_sha256: 60e73421d538d82464dad546acf472ea0ccbe8858b717de52221376f5ae724e7
 sources:
 - id: curves
   type: source
   path: g7_curves.csv
-  sha256: 3a23a1d09da8f45982da9e3ac1659606be32a3ae23a3c982cc34d4b6db2bd3ef
+  sha256: 3d4a6c9d71c4e58e997ba0b471f26bf14ee7202d26afff8652e672ebef53c82d
 renderer_version: 2.1.0rc1
 python: 3.13.14
-generated_at: '2026-09-11T18:57:48.954860+00:00'
+generated_at: '2026-09-12T03:10:04.421023+00:00'
 profile_id: nature.flagship.main.final.v2026-09-11

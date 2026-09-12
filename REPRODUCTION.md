@@ -81,10 +81,13 @@ T-series (T1, T2, ...) in the corrected trainer (G4).
   (results/trainer_validation/g7/g7_progress.jsonl, resume skips done folds);
   watchdog tools/watch_g7_training.sh (crontab */10) auto-relaunched across a
   machine suspend. Per-epoch training-curve visualization:
-  scripts/plot_g7_curves.py (static PNG) + rfig contract
-  results/trainer_validation/g7/rfig/ (double-column 183 mm, CJK labels via
-  RFIG_FONT -> g7_curves_rfig.png). Pushed to public repo
-  Yhyb24P/yh-SoyDNGPNext (repro branch = default; upstream-legacy tag =
-  frozen baseline).
+  scripts/plot_g7_curves.py (g7_curves_full.png: protein 8 folds /
+  maturity_group 10 folds) + rfig contract results/trainer_validation/g7/rfig/
+  (g7_curves_rfig.png, double-column 183 mm, CJK labels via RFIG_FONT,
+  8-fold intersection; CSV built by scripts/make_g7_rfig_csv.py). Protein
+  folds 0,1 were resumed from checkpoint so their per-epoch curves were not
+  re-captured (their final metrics remain in the 10-fold aggregate). Pushed
+  to public repo Yhyb24P/yh-SoyDNGPNext (repro branch = default;
+  upstream-legacy tag = frozen baseline).
 - NEXT after G7: expand to all 23 traits (optional), then G8. ONNX export of
   the author's .pt weights (opset <= 26) can run in parallel.

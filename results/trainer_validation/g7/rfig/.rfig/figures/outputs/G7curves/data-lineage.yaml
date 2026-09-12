@@ -2,7 +2,7 @@ nodes:
 - id: curves
   type: source
   path: g7_curves.csv
-  sha256: 3a23a1d09da8f45982da9e3ac1659606be32a3ae23a3c982cc34d4b6db2bd3ef
+  sha256: 3d4a6c9d71c4e58e997ba0b471f26bf14ee7202d26afff8652e672ebef53c82d
 transformations: []
 panel_sources:
   protein: curves

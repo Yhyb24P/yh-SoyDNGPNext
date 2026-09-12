@@ -96,5 +96,5 @@ reader / reader_cpu 来自上游包，已通过 G1 / G2 契约检查（见 `upst
 - D2 完成：样本 × 表型对齐，精确 16,960 + 零填充 1,441（用户接受）→ 队列 18,401，非缺失 15,899；表型缺失为行级，23 性状共享同一队列（`upstream/results/data_contract/d2/`）。
 - D3 完成：论文输入矩阵 15,899 × 32,032（`data/derived/d3_matrix/`），one-hot 206×206 wrap parity PASS（`upstream/results/data_contract/d3/`）。
 - G6 完成：真实数据冒烟（1,024 子集 × 50 ep，非 150ep），回归 / 分类两门全 PASS（`upstream/results/trainer_validation/g6/`）。
-- G7 进行中（2026-09-12）：论文忠实基线 2 性状试点（protein 回归 + maturity_group 分类，10-fold × 150 epochs，PAPER_REPRO，全 D3 矩阵 15,899）；setsid 脱离 + 逐折 checkpoint（`upstream/results/trainer_validation/g7/g7_progress.jsonl`）+ 看门狗自动重启。逐 epoch 训练曲线可视化：matplotlib 版 `upstream/scripts/plot_g7_curves.py` + rfig 版（双栏 183mm、中文，`upstream/results/trainer_validation/g7/g7_curves_rfig.png`）。
+- G7 完成（2026-09-12）：论文忠实基线 2 性状试点（protein 回归 + maturity_group 分类，10-fold × 150 epochs，PAPER_REPRO，全 D3 矩阵 15,899）。结果：protein PCC@150ep 0.6701±0.0153，maturity_group macro-F1@150ep 0.5544±0.0173。setsid 脱离 + 逐折 checkpoint + 看门狗自动重启；逐 epoch 曲线可视化：matplotlib 版 `upstream/scripts/plot_g7_curves.py`（`g7_curves_full.png`，蛋白 8 折 / 成熟度 10 折）+ rfig 版（`g7_curves_rfig.png`，双栏 183mm、中文、8 折交集；CSV 由 `upstream/scripts/make_g7_rfig_csv.py` 生成；蛋白 fold 0,1 断点续训未重抓曲线）。已推送公开仓库 `Yhyb24P/yh-SoyDNGPNext`（repro 分支）。
 - 下一步：G8 修正 / 公平基线；作者 .pt 权重导出 ONNX（opset 26 以内）可并行。
